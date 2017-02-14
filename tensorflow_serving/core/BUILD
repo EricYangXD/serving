@@ -365,7 +365,7 @@ cc_test(
     srcs = ["aspired_versions_manager_builder_test.cc"],
     deps = [
         ":aspired_versions_manager_builder",
-        ":eager_load_policy",
+        ":availability_preserving_policy",
         ":servable_data",
         ":servable_handle",
         ":servable_state_monitor",
@@ -534,7 +534,7 @@ cc_test(
     deps = [
         ":aspired_version_policy",
         ":aspired_versions_manager",
-        ":eager_load_policy",
+        ":availability_preserving_policy",
         ":loader",
         ":manager",
         ":servable_data",
@@ -636,54 +636,6 @@ cc_test(
         ":servable_id",
         "//tensorflow_serving/core/test_util:test_main",
         "//tensorflow_serving/util:optional",
-    ],
-)
-
-cc_library(
-    name = "eager_load_policy",
-    srcs = ["eager_load_policy.cc"],
-    hdrs = ["eager_load_policy.h"],
-    visibility = [
-        "//visibility:public",
-    ],
-    deps = [
-        ":aspired_version_policy",
-        ":loader_harness",
-        "//tensorflow_serving/util:optional",
-    ],
-)
-
-cc_test(
-    name = "eager_load_policy_test",
-    srcs = ["eager_load_policy_test.cc"],
-    deps = [
-        ":eager_load_policy",
-        ":servable_id",
-        "//tensorflow_serving/core/test_util:test_main",
-    ],
-)
-
-cc_library(
-    name = "eager_unload_policy",
-    srcs = ["eager_unload_policy.cc"],
-    hdrs = ["eager_unload_policy.h"],
-    visibility = [
-        "//visibility:public",
-    ],
-    deps = [
-        ":aspired_version_policy",
-        ":loader_harness",
-        "//tensorflow_serving/util:optional",
-    ],
-)
-
-cc_test(
-    name = "eager_unload_policy_test",
-    srcs = ["eager_unload_policy_test.cc"],
-    deps = [
-        ":eager_unload_policy",
-        ":servable_id",
-        "//tensorflow_serving/core/test_util:test_main",
     ],
 )
 
